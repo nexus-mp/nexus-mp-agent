@@ -1,0 +1,72 @@
+openapi: 3.1.0
+info:
+  title: Nexus-MP Sidecar Agent API
+  version: 0.0.0
+servers:
+- url: /
+paths:
+  /register:
+    post:
+      operationId: registerServer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GameServerInfo'
+        required: true
+      responses:
+        "200":
+          description: Server registered successfully
+      summary: Register a game server
+  /health:
+    post:
+      operationId: reportHealth
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/HealthCheckPayload'
+        required: true
+      responses:
+        "200":
+          description: Health report received successfully
+      summary: Report game server health
+components:
+  schemas:
+    GameServerInfo:
+      example:
+        address: address
+        port: 0
+        healthStatus: 5
+        availableScenes:
+        - availableScenes
+        - availableScenes
+        serverId: serverId
+        currentLoad: 1
+        capacity: 6
+      properties:
+        serverId:
+          type: string
+        address:
+          type: string
+        port:
+          type: integer
+        capacity:
+          type: integer
+        currentLoad:
+          type: integer
+        availableScenes:
+          items:
+            type: string
+          type: array
+        healthStatus:
+          type: integer
+    HealthCheckPayload:
+      example:
+        healthStatus: 0
+        serverId: serverId
+      properties:
+        serverId:
+          type: string
+        healthStatus:
+          type: integer

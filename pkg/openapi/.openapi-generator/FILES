@@ -1,0 +1,13 @@
+.openapi-generator-ignore
+README.md
+api/openapi.yaml
+go/api.go
+go/api_default.go
+go/api_default_service.go
+go/error.go
+go/helpers.go
+go/impl.go
+go/logger.go
+go/model_game_server_info.go
+go/model_health_check_payload.go
+go/routers.go
